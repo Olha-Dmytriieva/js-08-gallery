@@ -9,7 +9,7 @@ const closeButtonEl = document.querySelector('button[data-action="close-lightbox
 const modalEl = document.querySelector('.js-lightbox')
 const overlayEl = document.querySelector('.lightbox__overlay')
 
-// 
+// big pictures
 const mainPicEl = document.querySelector('.lightbox__image')
 
 
@@ -37,20 +37,25 @@ pictures.forEach(item => {
     
 });
 
-// const bigImg = pictures.forEach(item => {
-//    console.log(mainPicEl.src = item.original)  
-// })
 
-
-
-rootEl.addEventListener('click',()=>{
-
-
-    modalEl.classList.add('is-open')
-    // mainPicEl.src = item.original
+function clickControl(event){
+    if(event.target.nodeName !== 'IMG'){
+        // console.log(pictures)
+        return
+    }
 
     
-})
+    modalEl.classList.add('is-open')
+
+    pictures.forEach(item, indx) => {
+        mainPicEl.src = item.original  
+
+        console.log(event)
+     })
+}
+
+
+rootEl.addEventListener('click', clickControl)
 
 
 
