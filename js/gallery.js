@@ -6,31 +6,38 @@ import pictures from "/js/pics.js";
 const galleryEl = document.querySelector('.js-gallery');
 
 
+const mainPicEl = document.querySelector('.lightbox__image');
 
-pictures.forEach(item => {
+pictures.forEach((item, indx) => {
+
+// console.log(indx)
+    /// elements list for preview
+    const liElement = document.createElement('li');
+
+    const aElement = document.createElement('a');
+    aElement.href = item.original;
+
+    const imgPreviewEl = document.createElement('img');
+    imgPreviewEl.src = item.preview;
+    imgPreviewEl.width = '340';
+    imgPreviewEl.alt = item.description;
+    imgPreviewEl.setAttribute('data-picture', item.original);
+    // imgPreviewEl.setAttribute('data-index', indx);
+    imgPreviewEl.setAttribute('data-index', '0')
+    
 
 
-    ///list elements for preview
-const liElement = document.createElement('li');
-
-const aElement = document.createElement('a');
-aElement.href = item.original;
-
-const imgPreviewEl = document.createElement('img');
-imgPreviewEl.src = item.preview;
-imgPreviewEl.width = '340';
-imgPreviewEl.alt = item.description;
-imgPreviewEl.setAttribute('data-picture', item.original)
+    galleryEl.append(liElement);
+    liElement.append(aElement);
+    aElement.append(imgPreviewEl);
 
 
-galleryEl.append(liElement);
-liElement.append(aElement);
-aElement.append(imgPreviewEl);
-
+   
+    
 });
 
 
-const mainPicEl = document.querySelector('.lightbox__image');
+
 
 function mainPicFunction(event){
     event.preventDefault()
@@ -38,10 +45,16 @@ function mainPicFunction(event){
         return
      }
 
+      
+    mainPicEl.setAttribute('data-change', '0')
     mainPicEl.src = event.target.dataset.picture;
-    modalEl.classList.add('is-open')
+    mainPicEl.alt = `${event.target.description}`
+    
+    modalEl.classList.add('is-open');
 
-//    console.log(event.target.dataset) 
+    
+   
+    
 }
 
 galleryEl.addEventListener('click', mainPicFunction)
@@ -52,12 +65,38 @@ const closeButtonEl = document.querySelector('button[data-action="close-lightbox
 const modalEl = document.querySelector('.js-lightbox')
 const overlayEl = document.querySelector('.lightbox__overlay')
 
+// function datasetRemoval(){
+//     if((modalEl.classList.contains('is-open')===false)){
+        
+//         mainPicEl.src = "";
+//       } 
+// }
+
 closeButtonEl.addEventListener('click',()=>
-modalEl.classList.remove('is-open')
-)
+modalEl.classList.remove('is-open') )
+
 
 overlayEl.addEventListener('click',()=>
-modalEl.classList.remove('is-open')
+modalEl.classList.remove('is-open') 
+
+
+
 )
 
-// modalEl.addEventListener('keyup')
+window.addEventListener('keydown', event =>{
+    if(event.code === 'Escape'){
+        mainPicEl.src = "";
+        modalEl.classList.remove('is-open') 
+    }
+// console.log(event.code)
+
+});
+
+// galleryEl.addEventListener('keydown', event =>{
+//     const calculator = '0';
+//     if(event.code === 'ArrowRight'){
+//         console.log(event.currentTarget)
+//     }
+
+// })
+
