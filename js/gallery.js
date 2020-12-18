@@ -1,4 +1,4 @@
-import pictures from "/js/pics.js";
+import pictures from "./pics.js";
 
 
 
@@ -10,7 +10,7 @@ const mainPicEl = document.querySelector('.lightbox__image');
 
 pictures.forEach((item, indx) => {
 
-// console.log(indx)
+
     /// elements list for preview
     const liElement = document.createElement('li');
 
@@ -22,7 +22,6 @@ pictures.forEach((item, indx) => {
     imgPreviewEl.width = '340';
     imgPreviewEl.alt = item.description;
     imgPreviewEl.setAttribute('data-picture', item.original);
-    // imgPreviewEl.setAttribute('data-index', indx);
     imgPreviewEl.setAttribute('data-index', '0')
     
 
@@ -92,7 +91,7 @@ window.addEventListener('keydown', event =>{
 
 });
 
-// galleryEl.addEventListener('keydown', event =>{
+// window.addEventListener('keydown', event =>{
 //     const calculator = '0';
 //     if(event.code === 'ArrowRight'){
 //         console.log(event.currentTarget)
