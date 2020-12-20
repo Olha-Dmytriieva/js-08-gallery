@@ -7,6 +7,7 @@ const galleryEl = document.querySelector('.js-gallery');
 
 
 const mainPicEl = document.querySelector('.lightbox__image');
+let indexElement = 0;
 
 pictures.forEach((item, indx) => {
 
@@ -30,10 +31,41 @@ pictures.forEach((item, indx) => {
     liElement.append(aElement);
     aElement.append(imgPreviewEl);
 
+        function sliderRight(event){
+         
+        if (event.code === 'ArrowRight') {
+            
+        const indexRef = event.target.querySelector('img');
+        console.log(event.target    )
+        let datasetRef = Number(indexRef.dataset.index);
+        // console.log(indexRef.dataset.index)
+
+            // let nextPic = 1;
+            let elementById;
+            // console.log(indexRef.dataset.picture)
+        indexElement += 1;
+        // console.log(indexElement)
+        if (indexElement >= pictures.length) {
+            indexElement = pictures.length - 1;
+            // elementById = indexRef.dataset.picture;
+            // mainPicEl.src = elementById;
+
+            // console.log(indexRef.dataset.picture)
+        };
+        
+        // elementById = indexRef.dataset.picture;
+        // mainPicEl.src = elementById;
+        // console.log(indexRef)
+        if (indexElement === datasetRef) {
+            elementById = indexRef.dataset.picture;
+            mainPicEl.src = elementById;
+
+            // console.log(indexRef.dataset.picture)
+        }
 
    
     
-});
+}}});
 
 
 
@@ -47,22 +79,41 @@ pictures.forEach((item, indx) => {
         
         // mainPicEl.setAttribute('data-change', '0')
         mainPicEl.src = event.target.dataset.picture;
-        // mainPicEl.alt = `${event.target.description}`
+        mainPicEl.alt = `${event.target.alt}`
         
+    
         modalEl.classList.add('is-open');
-
+        // console.log(event.target)
         
     }
 
     // function sliderRight(event){
-    //     const indexRef = event.target.querySelector('img')
-    //     let datasetRef = Number(indexRef.dataset.index);
-    //     let nextPic = datasetRef +1;
+    //     if (event.code === 'ArrowRight') {
+            
+    //         const indexRef = event.target.querySelector('img');
+    //         let datasetRef = Number(indexRef.dataset.index);
 
-    //     mainPicEl.src = nextPic;
+
+    //             let nextPic = 1;
+    //             let elementById;
+           
+    //         indexElement += nextPic;
+    //         // console.log(indexElement)
+    //         if (indexElement >= pictures.length) {
+    //             indexElement = pictures.length - 1;
+                
+
+    //             console.log(event.code)
+    //         };
+                
+    //         if (indexElement === datasetRef) {
+    //             elementById = indexRef.dataset.picture;
+    //             mainPicEl.src = elementById;
+
+    //             console.log(indexRef.dataset.picture)
+    //         }
         
-        
-    //     console.log(mainPicEl.src)
+    // }}
 
     // }
 
@@ -92,32 +143,44 @@ pictures.forEach((item, indx) => {
         }
     })
 
-    // window.addEventListener('keydown', sliderRight);
-
-    // window.addEventListener('keydown', event =>{
-    //     const indexRef = event.target.querySelector('img');
-    //     // console.log(indexRef)
-
-    //     let datasetRef = Number(indexRef.dataset.index);
-    //     console.dir(datasetRef)
-
-
-
-    //     let nextPic = 0;
-
-       
-    //          if(event.code === 'ArrowRight'){
-           
-    //         //  
-    //         nextPic = datasetRef + 1;
-    //         mainPicEl.src =  indexRef.dataset.picture;
-            
-    //         console.log('click')
-            
+    window.addEventListener('keydown', sliderRight);
+    // let elementById;
+//     window.addEventListener('keydown', event=>{
         
+//         if (event.code === 'ArrowRight') {
+            
+//         const indexRef = event.target.querySelector('img');
+//         console.log(event.target    )
+//         let datasetRef = Number(indexRef.dataset.index);
+//         // console.log(indexRef.dataset.index)
 
-    //      }
+//             // let nextPic = 1;
+//             let elementById;
+//             // console.log(indexRef.dataset.picture)
+//         indexElement += 1;
+//         // console.log(indexElement)
+//         if (indexElement >= pictures.length) {
+//             indexElement = pictures.length - 1;
+//             // elementById = indexRef.dataset.picture;
+//             // mainPicEl.src = elementById;
+
+//             // console.log(indexRef.dataset.picture)
+//         };
+        
+//         elementById = indexRef.dataset.picture;
+//         mainPicEl.src = elementById;
+//         console.log(indexRef)
+//         // if (indexElement === datasetRef) {
+//         //     elementById = indexRef.dataset.picture;
+//         //     mainPicEl.src = elementById;
+
+//         //     // console.log(indexRef.dataset.picture)
+//         // }
+
+     
+    
+// }})
 
         
-    // })
+   
 
