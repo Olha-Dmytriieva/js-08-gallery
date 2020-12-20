@@ -22,7 +22,7 @@ pictures.forEach((item, indx) => {
     imgPreviewEl.width = '340';
     imgPreviewEl.alt = item.description;
     imgPreviewEl.setAttribute('data-picture', item.original);
-    imgPreviewEl.setAttribute('data-index', '0')
+    imgPreviewEl.setAttribute('data-index', indx)
     
 
 
@@ -45,7 +45,7 @@ pictures.forEach((item, indx) => {
         }
 
         
-        mainPicEl.setAttribute('data-change', '0')
+        // mainPicEl.setAttribute('data-change', '0')
         mainPicEl.src = event.target.dataset.picture;
         mainPicEl.alt = `${event.target.description}`
         
@@ -56,9 +56,13 @@ pictures.forEach((item, indx) => {
 
     function sliderRight(event){
         const indexRef = event.target.querySelector('img')
-        let calculator = indexRef.dataset.index;
+        let datasetRef = Number(indexRef.dataset.index);
+        let nextPic = 1;
+
+        mainPicEl.src = datasetRef + nextPic;
         
-        console.log(typeof calculator)
+        
+        console.log(datasetRef +=1)
 
     }
 
