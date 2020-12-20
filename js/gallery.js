@@ -47,24 +47,24 @@ pictures.forEach((item, indx) => {
         
         // mainPicEl.setAttribute('data-change', '0')
         mainPicEl.src = event.target.dataset.picture;
-        mainPicEl.alt = `${event.target.description}`
+        // mainPicEl.alt = `${event.target.description}`
         
         modalEl.classList.add('is-open');
 
         
     }
 
-    function sliderRight(event){
-        const indexRef = event.target.querySelector('img')
-        let datasetRef = Number(indexRef.dataset.index);
-        let nextPic = 1;
+    // function sliderRight(event){
+    //     const indexRef = event.target.querySelector('img')
+    //     let datasetRef = Number(indexRef.dataset.index);
+    //     let nextPic = datasetRef +1;
 
-        mainPicEl.src = datasetRef + nextPic;
+    //     mainPicEl.src = nextPic;
         
         
-        console.log(datasetRef +=1)
+    //     console.log(mainPicEl.src)
 
-    }
+    // }
 
 
     galleryEl.addEventListener('click', mainPicFunction)
@@ -86,17 +86,38 @@ pictures.forEach((item, indx) => {
     closeButtonEl.addEventListener('click', datasetRemoval);
     overlayEl.addEventListener('click', datasetRemoval);
 
+    window.addEventListener('keydown', event =>{
+        if(event.code === 'Escape'){
+            modalEl.classList.remove('is-open');
+        }
+    })
 
-
-    window.addEventListener('keydown', sliderRight);
+    // window.addEventListener('keydown', sliderRight);
 
     // window.addEventListener('keydown', event =>{
-    //     let calculator = 0;
-    //     if(event.code === 'ArrowRight'){
-    //         calculator = calculator + 1;
+    //     const indexRef = event.target.querySelector('img');
+    //     // console.log(indexRef)
+
+    //     let datasetRef = Number(indexRef.dataset.index);
+    //     console.dir(datasetRef)
+
+
+
+    //     let nextPic = 0;
+
+       
+    //          if(event.code === 'ArrowRight'){
+           
+    //         //  
+    //         nextPic = datasetRef + 1;
+    //         mainPicEl.src =  indexRef.dataset.picture;
+            
+    //         console.log('click')
+            
+        
+
+    //      }
 
         
-    //     } console.log(calculator)
-
     // })
 
