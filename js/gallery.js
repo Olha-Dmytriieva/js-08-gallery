@@ -87,36 +87,20 @@ pictures.forEach((item, indx) => {
         
     }
 
-    // function sliderRight(event){
-    //     if (event.code === 'ArrowRight') {
-            
-    //         const indexRef = event.target.querySelector('img');
-    //         let datasetRef = Number(indexRef.dataset.index);
+    let targetIndex = 0;
+    const imgModal = document.querySelector('.lightbox__image');
+    function sliderRight(event) {
+      if (event.code === 'ArrowRight' && pictures.length - 1 > targetIndex) {
+        targetIndex += 1;
+        imgModal.src = pictures[targetIndex].original;
+      } else if (event.code === 'ArrowLeft' && targetIndex > 0) {
+        targetIndex -= 1;
+        imgModal.src = pictures[targetIndex].original;
+      }
+    }
 
 
-    //             let nextPic = 1;
-    //             let elementById;
-           
-    //         indexElement += nextPic;
-    //         // console.log(indexElement)
-    //         if (indexElement >= pictures.length) {
-    //             indexElement = pictures.length - 1;
-                
-
-    //             console.log(event.code)
-    //         };
-                
-    //         if (indexElement === datasetRef) {
-    //             elementById = indexRef.dataset.picture;
-    //             mainPicEl.src = elementById;
-
-    //             console.log(indexRef.dataset.picture)
-    //         }
-        
-    // }}
-
-    // }
-
+ \
 
     galleryEl.addEventListener('click', mainPicFunction)
 
