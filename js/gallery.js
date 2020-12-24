@@ -100,7 +100,7 @@ pictures.forEach((item, indx) => {
     }
 
 
- \
+ 
 
     galleryEl.addEventListener('click', mainPicFunction)
 
